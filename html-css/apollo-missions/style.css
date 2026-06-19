@@ -1,0 +1,152 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #050816;
+    color: white;
+    line-height: 1.7;
+
+    background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 1px, transparent 1px);
+
+    background-size: 50px 50px, 100px 100px;
+    background-position: 0 0, 25px 25px;
+}
+
+/* NAVIGATION */
+
+nav {
+    background-color: #0B3D91;
+    text-align: center;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #FCB514;
+}
+
+/* HERO SECTION */
+
+.hero {
+    background-image: url("apollo11.jpg");
+    background-size: cover;
+    background-position: center;
+    min-height: 500px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    padding: 40px;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    color: white;
+    margin-bottom: 10px;
+
+    text-shadow:
+        0 0 10px black,
+        0 0 20px black;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    max-width: 700px;
+
+    text-shadow:
+        0 0 10px black,
+        0 0 20px black;
+}
+
+/* MAIN CONTENT */
+
+main {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #FCB514;
+    margin-top: 30px;
+}
+
+h2 {
+    color: #FCB514;
+    border-bottom: 2px solid #0B3D91;
+    padding-bottom: 5px;
+    margin-top: 40px;
+}
+
+/* LINKS */
+
+h2 a {
+    color: #FCB514;
+    text-decoration: none;
+}
+
+h2 a:hover {
+    color: white;
+}
+
+/* PARAGRAPHS */
+
+p {
+    max-width: 1100px;
+}
+
+/* IMAGES */
+
+img {
+    display: block;
+    margin: 25px auto;
+    max-width: 90%;
+    border-radius: 12px;
+
+    box-shadow:
+        0 0 15px #0B3D91,
+        0 0 25px #0B3D91;
+}
+
+/* LISTS */
+
+ul {
+    max-width: 800px;
+}
+
+/* CARDS */
+
+.card {
+    background-color: rgba(255,255,255,0.05);
+
+    border-left: 5px solid #FCB514;
+
+    padding: 20px;
+    margin: 25px 0;
+
+    border-radius: 10px;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 15px rgba(252,181,20,.4);
+}
