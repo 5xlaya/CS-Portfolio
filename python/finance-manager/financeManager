@@ -1,0 +1,164 @@
+print("Welcome to your personal finance manager!\n")
+
+income = []
+expenses = []
+
+
+def account_balance(balance):
+    print("Your current balance is $" + str(balance) + "\n")
+
+
+def add_income(income, balance):
+    amount = float(input("Enter the amount of income: $"))
+    balance += amount
+
+    source = input("What is the source of this income: ")
+    income.append([source, amount])
+
+    print("Income added successfully!\n")
+    return balance
+
+
+def add_expenses(expenses, balance):
+    spent = float(input("Enter the amount spent: $"))
+    balance -= spent
+
+    category = input("What is the category of this expense: ")
+    expenses.append([category, spent])
+
+    print("Expense added successfully!\n")
+    return balance
+
+
+def transaction_history(income, expenses):
+    print("\nTransactions")
+
+    print("Incomes:")
+    for i in income:
+        print("+ " + str(i[1]) + " | " + i[0])
+
+    print("\nExpenses:")
+    for i in expenses:
+        print("- " + str(i[1]) + " | " + i[0])
+
+    print()
+
+
+def spending_summary(income, expenses, balance):
+    total_income = sum([i[1] for i in income])
+    total_expenses = sum([i[1] for i in expenses])
+
+    print("\nSpending Summary:")
+    print("Total Income: $" + str(total_income))
+    print("Total Expenses: $" + str(total_expenses))
+    print("Balance Remaining: $" + str(balance))
+
+    print("\nExpenses by Category:")
+
+    expense_categories = {}
+
+    for category, amount in expenses:
+        if category in expense_categories:
+            expense_categories[category] += amount
+        else:
+            expense_categories[category] = amount
+
+    for category, total in expense_categories.items():
+        print(category + ": $" + str(total))
+
+    print()
+
+
+def set_budget():
+    budget = float(input("Enter your monthly budget: $"))
+    print("Budget set to $" + str(budget) + "\n")
+    return budget
+
+
+def view_budget(budget, spent):
+    print("\nBudget: $" + str(budget))
+    print("Spent: $" + str(spent))
+
+    if spent > budget:
+        excess = spent - budget
+        print("You have exceeded your budget by $" + str(excess) + ".\n")
+    else:
+        remaining = budget - spent
+        print("You are within your budget.")
+        print("You have $" + str(remaining) + " remaining.\n")
+
+
+def search(expenses, income):
+    search_term = input("Enter a category or source to search for: ")
+
+    print("\nSearch Results:")
+
+    print("Incomes:")
+    for i in income:
+        if search_term.lower() in i[0].lower():
+            print("+ " + str(i[1]) + " | " + i[0])
+
+    print("\nExpenses:")
+    for i in expenses:
+        if search_term.lower() in i[0].lower():
+            print("- " + str(i[1]) + " | " + i[0])
+
+    print()
+
+
+def menu():
+    print("Please select an option:")
+    print("1. View Account Balance")
+    print("2. Add Income")
+    print("3. Add Expenses")
+    print("4. View Transaction History")
+    print("5. View Spending Summary")
+    print("6. Set Budget")
+    print("7. View Budget")
+    print("8. Search Transactions")
+    print("9. Exit")
+
+
+def main():
+    balance = 0.0
+    budget = 0.0
+
+    while True:
+        menu()
+        choice = input("Enter your choice (1-9): ")
+
+        if choice == "1":
+            account_balance(balance)
+
+        elif choice == "2":
+            balance = add_income(income, balance)
+
+        elif choice == "3":
+            balance = add_expenses(expenses, balance)
+
+        elif choice == "4":
+            transaction_history(income, expenses)
+
+        elif choice == "5":
+            spending_summary(income, expenses, balance)
+
+        elif choice == "6":
+            budget = set_budget()
+
+        elif choice == "7":
+            total_expenses = sum([i[1] for i in expenses])
+            view_budget(budget, total_expenses)
+
+        elif choice == "8":
+            search(expenses, income)
+
+        elif choice == "9":
+            print("Thank you for using the personal finance manager. Goodbye!")
+            break
+
+        else:
+            print("Invalid choice. Please try again.\n")
+
+
+if __name__ == "__main__":
+    main()
